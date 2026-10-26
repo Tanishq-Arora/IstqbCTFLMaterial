@@ -25,14 +25,14 @@ This repository aims to provide:
 
 ### CTFL Syllabus
 
-| Chapter | Topic | Notes |
-|---|---|---|
-| 1 | Fundamentals of Testing | [View Notes](./01-Fundamentals-of-Testing/) |
+| Chapter | Topic | Notes                                           |
+|---|---|-------------------------------------------------|
+| 1 | Fundamentals of Testing | [View Notes](./01-fundamentals-of-testing/)     |
 | 2 | Testing Throughout the Software Development Lifecycle | [View Notes](./02-Testing-throughout-the-SDLC/) |
-| 3 | Static Testing | [View Notes](./03-Static-Testing/) |
-| 4 | Test Analysis and Design | [View Notes](./04-Test-Analysis-and-Design/) |
-| 5 | Managing Test Activities | [View Notes](./05-Managing-Test-Activities/) |
-| 6 | Test Tools | [View Notes](./06-Test-Tools/) |
+| 3 | Static Testing | [View Notes](./03-Static-Testing/)              |
+| 4 | Test Analysis and Design | [View Notes](./04-Test-Analysis-and-Design/)    |
+| 5 | Managing Test Activities | [View Notes](./05-Managing-Test-Activities/)    |
+| 6 | Test Tools | [View Notes](./06-Test-Tools/)                  |
 
 > The folder structure follows the CTFL syllabus topics to make navigation and revision easier.
 
