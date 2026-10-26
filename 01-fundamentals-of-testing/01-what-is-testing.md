@@ -1,770 +1,791 @@
-# What is Testing?
 
-## Definition
+# 1.1 What Is Testing?
 
-**Software testing is a set of activities to discover defects and evaluate the quality of software artifacts.**
+## Purpose of These Notes
 
-The software artifacts being tested are known as **test objects**.
+Understand the meaning of software testing, its objectives, the activities involved in testing, and the difference between testing and debugging.
 
-> **Exam Keyword:** Testing = discovering defects + evaluating quality.
+**Syllabus mapping:** ISTQB CTFL — Chapter 1, Fundamentals of Testing, Topic 1.1, What Is Testing?
 
----
+**Exam focus:**
+- Define software testing accurately.
+- Understand testing objectives.
+- Recognize static and dynamic testing.
+- Understand testing as more than test execution.
+- Distinguish testing from debugging.
+- Identify the appropriate testing objective in a scenario.
 
-## Testing Is More Than Test Execution
-
-A common misconception is:
-
-> **Testing = executing the software and checking the results.**
-
-This is incorrect.
-
-**Test execution is only one part of testing.**
-
-Testing can include activities such as:
-
-* Test planning
-* Test analysis
-* Test design
-* Test implementation
-* Test execution
-* Evaluation of test results
-* Reporting
-* Monitoring and control
-
-Therefore:
-
-> **Testing is a broader activity than simply running test cases.**
-
-### Exam Perspective
-
-If a question states:
-
-> "Testing consists only of executing tests."
-
-**Answer: False.**
-
-Testing includes activities that take place **before, during, and after test execution**.
+> These notes are based on the concepts discussed in this chapter and the standard CTFL terminology. The practice questions are original, not verified official ISTQB questions or past examination questions.
 
 ---
 
-# Testing Is Not Limited to the Final Software
+## 1. What Is Software Testing?
 
-Another common misconception is:
+### Definition
 
-> **Testing focuses entirely on verifying the executable software.**
+Software testing is a set of activities intended to discover defects and evaluate the quality of software work products.
 
-Testing can be performed on different **software work products**, including:
+These work products, when being tested, are called **test objects**.
 
-* Requirements
-* User stories
-* Designs
-* Code
-* Other software artifacts
+A test object may include:
+- Requirements
+- User stories
+- Design documents
+- Source code
+- Test scripts
+- APIs
+- Individual software components
+- Integrated systems
+- Complete applications
 
-The artifact being tested is referred to as the **test object**.
+### Important Concepts
 
-### Exam Trap
+**Testing is not just test execution.**
 
-> "Only executable software can be tested."
+A common misconception is that testing consists only of running software and checking the results.
 
-❌ **Incorrect**
+Testing also includes:
+- Planning
+- Analysis
+- Design
+- Implementation
+- Monitoring
+- Control
+- Completion activities
 
-Requirements, designs, user stories, code, and other work products can also be evaluated.
+**Testing is not exclusively verification.**
 
----
+Testing may evaluate whether specified requirements have been fulfilled and whether the product meets stakeholder needs and expectations.
 
-# Static and Dynamic Testing
+**Testing may be static or dynamic.**
 
-Testing can be broadly classified into:
+- **Static testing:** Evaluates a work product without executing the software. Examples include reviews and static analysis.
+- **Dynamic testing:** Evaluates software by executing it and examining its behavior and results.
 
-## Static Testing
-
-Static testing evaluates a work product **without executing the software**.
-
-Examples include:
-
-* Reviews
-* Inspections
-* Static analysis
-
-Static testing can directly identify defects in work products.
-
-```text
-Work Product
-     ↓
-Static Testing
-     ↓
-Defect Identified
-```
-
----
-
-## Dynamic Testing
-
-Dynamic testing involves **executing the test object**.
-
-During dynamic testing, tests can trigger failures.
-
-```text
-Test Execution
-      ↓
-Failure Observed
-      ↓
-Investigate
-      ↓
-Defect Identified
-```
-
-### Exam Trap
-
-> "Testing always requires execution of the software."
-
-❌ **False**
-
-Static testing does not require software execution.
-
----
-
-# Testing Is Not Only a Technical Activity
-
-Testing is not purely a technical activity.
-
-It also needs to be:
-
-* Planned
-* Managed
-* Estimated
-* Monitored
-* Controlled
-
-Therefore, testing contains both **technical** and **management** aspects.
-
-### Technical Activities
-
-Examples:
-
-* Test analysis
-* Test design
-* Test implementation
-* Test execution
-* Evaluation of results
-
-### Management Activities
-
-Examples:
-
-* Test planning
-* Test estimation
-* Test monitoring
-* Test control
-* Test reporting
-
-### Exam Perspective
-
-> "Testing is purely a technical activity performed by testers."
-
-❌ **Incorrect**
-
-Testing also requires appropriate planning, management, estimation, monitoring, and control.
-
----
-
-# Test Objectives
-
-The typical objectives of testing include:
-
-## 1. Evaluating Work Products
-
-Testing evaluates software work products such as:
-
-* Requirements
-* User stories
-* Designs
-* Code
-
-### Exam Point
-
-Testing is **not restricted to executable software**.
-
----
-
-## 2. Triggering Failures and Finding Defects
-
-Testing aims to:
-
-* Trigger failures during dynamic testing
-* Find defects in test objects
-* Provide information about the quality of the test object
-
-Static and dynamic testing approach defects differently.
-
-```text
-Static Testing
-     ↓
-Defect can be identified directly
-
-Dynamic Testing
-     ↓
-Execute software
-     ↓
-Failure
-     ↓
-Defect may be identified
-```
-
----
-
-## 3. Ensuring Required Coverage
-
-Testing aims to achieve the required level of **coverage** of the test object.
-
-Coverage can provide information about how much of a particular aspect has been exercised by testing.
-
-Examples include:
-
-* Requirement coverage
-* Code coverage
-* Test condition coverage
-* Risk coverage
-
-### Exam Trap
-
-> "Required coverage means testing every possible input and scenario."
-
-❌ Not necessarily.
-
-**Exhaustive testing is generally impossible.**
-
----
-
-## 4. Reducing the Risk of Inadequate Software Quality
-
-Testing helps reduce the risk associated with inadequate software quality.
-
-Testing provides information about:
-
-* Defects
-* Quality
-* Coverage
-* Risks
-* Remaining uncertainty
-
-This information can support decisions about the software.
-
----
-
-## 5. Verifying Specified Requirements
-
-Testing can verify whether specified requirements have been fulfilled.
-
-### Example
-
-```text
-Requirement:
-Users must be able to reset their password.
-
-Test:
-Perform password reset.
-
-Expected Result:
-Password is successfully reset.
-```
-
-The test provides evidence about whether the specified requirement has been fulfilled.
-
----
-
-## 6. Verifying Contractual, Legal, and Regulatory Requirements
-
-Testing can verify whether the test object complies with:
-
-* Contractual requirements
-* Legal requirements
-* Regulatory requirements
-
-This can be particularly important for software operating in regulated environments.
-
----
-
-## 7. Providing Information to Stakeholders
-
-Testing provides information that allows stakeholders to make **informed decisions**.
-
-Testing can provide information about:
-
-* Current quality
-* Defects
-* Coverage
-* Risks
-* Test progress
-* Remaining uncertainty
-
-### Important
-
-Testing is therefore not simply about producing:
-
-```text
-PASS / FAIL
-```
-
-It also provides useful information for decision-making.
-
----
-
-## 8. Building Confidence in Quality
-
-Testing can increase stakeholders' confidence in the quality of the test object.
-
-However:
-
-> **Testing cannot prove that the software is completely defect-free.**
-
-Testing provides evidence and can reduce uncertainty and risk, but it cannot guarantee the absence of defects.
-
----
-
-## 9. Validating Stakeholder Expectations
-
-Testing can validate whether the test object:
-
-* Is complete
-* Works as expected by stakeholders
-* Meets stakeholder needs and expectations
-
-This relates to the concept of **validation**.
-
----
-
-# Verification vs Validation
-
-A useful distinction for exam purposes:
-
-## Verification
-
-> **Are we building the product correctly according to specified requirements?**
-
-Focus:
-
-* Specified requirements
-* Specifications
-* Work products
-* Correct implementation
-
----
-
-## Validation
-
-> **Are we building the right product that meets stakeholder needs and expectations?**
-
-Focus:
-
-* Stakeholder needs
-* Expectations
-* Intended use
-* Suitability
-
-### Easy Memory Trick
-
-```text
-VERIFICATION
-"Did we build it correctly?"
-
-VALIDATION
-"Did we build the right thing?"
-```
-
----
-
-# Testing and Debugging
-
-**Testing and debugging are separate activities.**
-
-They have different purposes.
-
----
-
-## Testing
-
-Testing is concerned with:
-
-* Evaluating work products
-* Finding defects
-* Triggering failures
-* Evaluating quality
-* Providing information about risks and quality
-
----
-
-## Debugging
-
-Debugging is concerned with:
-
-* Finding the cause of a failure
-* Analyzing the cause
-* Removing or fixing the cause
-
-### Easy Way to Remember
-
-```text
-TESTING
-"Something is wrong."
-       ↓
-DEBUGGING
-"Why is it wrong?"
-       ↓
-FIX
-"Remove the cause."
-```
-
----
-
-# Dynamic Testing and Debugging
-
-When dynamic testing triggers a failure, debugging is used to investigate the failure.
-
-The typical debugging process is:
-
-```text
-Failure
-   ↓
-Reproduction
-   ↓
-Diagnosis
-   ↓
-Fixing the Cause
-```
-
----
-
-## 1. Reproduction
-
-The failure is reproduced to confirm and investigate the observed behavior.
-
----
-
-## 2. Diagnosis
-
-The cause of the failure is investigated.
-
-The goal is to identify the underlying **defect/root cause**.
-
----
-
-## 3. Fixing
-
-The identified cause is corrected or removed.
-
----
-
-# Static Testing and Debugging
-
-Static testing works differently.
-
-Static testing can **directly identify defects** in a work product because it does not execute the software.
-
-Therefore, when static testing identifies a defect:
-
-```text
-Static Testing
-      ↓
-Defect Identified
-      ↓
-Remove / Correct Defect
-```
-
-There is no need to reproduce a failure because:
-
-* The software was not executed.
-* Static testing directly identified the defect.
-* No failure was triggered by the static test.
-
----
-
-# Error, Defect, and Failure
-
-These terms are important for understanding the relationship between testing and debugging.
-
-## Error
-
-A **human action** that produces an incorrect result.
-
-Example:
-
-> A developer misunderstands a requirement.
-
----
-
-## Defect
-
-A **flaw in a work product** that can cause the software to fail to perform as expected.
-
-Example:
-
-> The developer implements the password validation incorrectly.
-
----
-
-## Failure
-
-An event in which the software does not perform a required function within specified limits.
-
-Example:
-
-> The application accepts a password that should have been rejected.
-
----
-
-## Relationship
-
-A common relationship is:
-
-```text
-Human Error
-     ↓
-Defect
-     ↓
-Failure
-```
-
-### Important Exam Point
-
-A defect **may cause** a failure when the software is executed.
-
-Not every defect necessarily causes a failure in every situation.
-
----
-
-# Testing vs Debugging
-
-| Aspect              | Testing                              | Debugging                                                                          |
-| ------------------- | ------------------------------------ | ---------------------------------------------------------------------------------- |
-| Primary purpose     | Find defects / trigger failures      | Find and remove causes                                                             |
-| Can be static?      | Yes                                  | Debugging after static defect identification does not require failure reproduction |
-| Executes software?  | Dynamic testing does                 | Not the defining characteristic                                                    |
-| Finds failure?      | Dynamic testing can trigger failures | Investigates the failure                                                           |
-| Root cause analysis | Not its primary purpose              | Yes                                                                                |
-| Fixes defect?       | No                                   | Yes                                                                                |
-| Main question       | "Is there a problem?"                | "Why is there a problem?"                                                          |
-
----
-
-# Static vs Dynamic Testing
-
-| Static Testing                       | Dynamic Testing                   |
-| ------------------------------------ | --------------------------------- |
-| Does not execute software            | Executes software                 |
-| Can directly identify defects        | Can trigger failures              |
-| Applied to work products             | Applied through execution         |
-| Examples: reviews, static analysis   | Examples: functional/system tests |
-| No failure is triggered by execution | Failures can be observed          |
-
----
-
-# Testing vs Debugging Flow
-
-## Dynamic Testing
-
-```text
-Test Case
-    ↓
-Execute Software
-    ↓
-Failure
-    ↓
-Debugging
-    ↓
-Reproduce
-    ↓
-Diagnose
-    ↓
-Fix
-```
-
-## Static Testing
-
-```text
-Work Product
-    ↓
-Static Testing
-    ↓
-Defect Identified
-    ↓
-Correct / Remove Defect
-```
-
----
-
-# Exam Traps
-
-## Trap 1 — Testing = Execution
-
-> "Testing is the execution of software and checking actual results against expected results."
-
-❌ **Incorrect**
-
-Execution is only one part of testing.
-
----
-
-## Trap 2 — Only Software Can Be Tested
-
-> "Requirements cannot be tested because they are not executable."
-
-❌ **Incorrect**
-
-Requirements and other work products can be evaluated through testing activities such as static testing.
-
----
-
-## Trap 3 — Testing Always Requires Execution
-
-> "Testing always involves executing the test object."
-
-❌ **Incorrect**
-
-Static testing does not require execution.
-
----
-
-## Trap 4 — Static Testing Causes Failures
-
-> "Static testing triggers failures."
-
-❌ **Incorrect**
-
-Static testing does not execute the software, so it does not trigger execution failures.
-
----
-
-## Trap 5 — Testing and Debugging Are the Same
-
-> "Debugging is another name for testing."
-
-❌ **Incorrect**
-
-They are **separate activities**.
-
----
-
-## Trap 6 — Testers Fix Defects
-
-> "The primary purpose of testing is to fix defects."
-
-❌ **Incorrect**
-
-Testing finds defects/provides information.
-
-Debugging investigates and removes the causes of failures/defects.
-
----
-
-## Trap 7 — Testing Proves No Defects Exist
-
-> "If all tests pass, the software has no defects."
-
-❌ **Incorrect**
-
-Testing cannot prove the complete absence of defects.
-
----
-
-## Trap 8 — Testing Is Purely Technical
-
-> "Testing only involves technical test execution activities."
-
-❌ **Incorrect**
+**Testing is not purely a technical activity.**
 
 Testing also requires planning, management, estimation, monitoring, and control.
 
----
+### Practical SDET Example
 
-# Quick Revision
+Suppose you are testing a payment application.
 
-| Question                                          | Answer                                                                             |
-| ------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| What is testing?                                  | A set of activities to discover defects and evaluate quality of software artifacts |
-| What is a test object?                            | A software artifact being tested                                                   |
-| Is testing only execution?                        | No                                                                                 |
-| Can requirements be tested?                       | Yes                                                                                |
-| Can testing be static?                            | Yes                                                                                |
-| Does static testing execute software?             | No                                                                                 |
-| Can dynamic testing trigger failures?             | Yes                                                                                |
-| What is debugging?                                | Finding, analyzing, and removing the causes of failures/defects                    |
-| What happens after a dynamic failure?             | Debugging may reproduce, diagnose, and fix the cause                               |
-| Does static testing require failure reproduction? | No                                                                                 |
-| Can testing prove absence of defects?             | No                                                                                 |
-| Is testing purely technical?                      | No                                                                                 |
-| What does verification ask?                       | Are we building the product correctly?                                             |
-| What does validation ask?                         | Are we building the right product?                                                 |
+Your responsibilities may include:
 
----
+1. Reviewing payment requirements.
+2. Identifying test conditions.
+3. Designing API test cases.
+4. Preparing test data.
+5. Executing automated tests.
+6. Comparing actual and expected results.
+7. Reporting defects.
+8. Monitoring execution progress.
+9. Reporting quality risks to stakeholders.
 
-# 🧠 One-Minute Memory Map
+Only some of these activities involve executing tests, but all can contribute to the overall testing effort.
 
-```text
-                         TESTING
-                            │
-             ┌──────────────┴──────────────┐
-             │                             │
-          STATIC                        DYNAMIC
-             │                             │
-      No execution                    Execution
-             │                             │
-      Find defects                    Failure
-             │                             │
-             │                             ↓
-             │                         DEBUGGING
-             │                             │
-             │                    ┌────────┼────────┐
-             │                    │        │        │
-             │               Reproduce  Diagnose   Fix
-             │
-             └─────────────────────────────┐
-                                           │
-                                  TEST OBJECTIVES
-                                           │
-        ┌──────────────────────────────────┼────────────────────────┐
-        ↓                                  ↓                        ↓
- Evaluate work products              Find defects              Ensure coverage
-        ↓                                  ↓                        ↓
- Verify requirements                Reduce risks             Build confidence
-        ↓                                  ↓                        ↓
- Verify legal/contractual       Provide stakeholder       Validate stakeholder
- requirements                     information                 expectations
-```
+### Exam Trap
+
+**Incorrect:** Testing means executing test cases.
+
+**Correct:** Test execution is one activity within the broader testing process.
 
 ---
 
-# 🎯 Exam Priority
+## 2. Test Objectives
 
-| Topic                                   | Priority     |
-| --------------------------------------- | ------------ |
-| Definition of Testing                   | 🔴 Must Know |
-| Testing vs Test Execution               | 🔴 Must Know |
-| Test Object                             | 🔴 Must Know |
-| Static vs Dynamic Testing               | 🔴 Must Know |
-| Test Objectives                         | 🔴 Must Know |
-| Testing vs Debugging                    | 🔴 Must Know |
-| Dynamic Testing → Failure → Debugging   | 🔴 Must Know |
-| Debugging Process                       | 🔴 Must Know |
-| Error → Defect → Failure                | 🔴 Must Know |
-| Verification vs Validation              | 🟠 Important |
-| Testing is not purely technical         | 🟠 Important |
-| Testing cannot prove absence of defects | 🔴 Must Know |
+### Definition
+
+Test objectives describe what testing is intended to achieve.
+
+The appropriate objectives depend on the project, test level, test type, risks, and stakeholder needs.
+
+### The Typical Test Objectives
+
+#### 1. Evaluating Work Products
+
+Testing can evaluate requirements, user stories, designs, code, and other work products.
+
+**Example:** Reviewing an API specification to identify ambiguous error-handling requirements.
+
+#### 2. Triggering Failures and Finding Defects
+
+Dynamic testing may trigger failures caused by defects. Static testing can directly identify defects in work products.
+
+**Example:** An API returns an incorrect HTTP status code when an invalid token is supplied.
+
+#### 3. Ensuring Required Coverage
+
+Testing helps establish whether the required coverage of a test object has been achieved.
+
+**Example:** Confirming that all specified payment methods have been covered by the planned tests.
+
+#### 4. Reducing Risk
+
+Testing provides information that helps reduce the risk associated with inadequate software quality.
+
+**Example:** Testing transaction integrity before releasing a banking application.
+
+#### 5. Verifying Requirements
+
+Testing evaluates whether specified requirements have been fulfilled.
+
+**Example:** Checking whether a password must contain the characters required by the specification.
+
+#### 6. Checking Compliance
+
+Testing may verify whether a test object complies with contractual, legal, and regulatory requirements.
+
+**Example:** Evaluating whether a system satisfies applicable requirements for handling financial records.
+
+#### 7. Supporting Stakeholder Decisions
+
+Testing provides information that stakeholders can use to make informed decisions.
+
+**Example:** Reporting unresolved critical defects before a release decision.
+
+#### 8. Building Confidence
+
+Testing provides evidence that helps stakeholders develop confidence in the quality of the test object.
+
+**Example:** A successful regression test cycle provides evidence about the behavior of previously tested functionality.
+
+#### 9. Validating User Needs
+
+Testing can help evaluate whether a test object is complete and works as expected by stakeholders.
+
+**Example:** Confirming that a customer can complete a realistic checkout journey successfully.
+
+### Exam Trap
+
+Do not assume that finding defects is the only objective of testing.
+
+Testing can also evaluate work products, measure coverage, reduce risk, verify requirements, support decisions, build confidence, and validate stakeholder needs.
 
 ---
 
-# Final Exam Takeaways
+## 3. Static Testing vs Dynamic Testing
 
-Remember these **10 statements**:
+| Aspect | Static Testing | Dynamic Testing |
+|---|---|---|
+| Software execution | Does not require execution of the software | Requires execution of the software |
+| Typical activities | Reviews, static analysis | Functional and non-functional test execution |
+| Defect detection | Can directly identify defects in work products | Can reveal failures caused by defects |
+| Example | Reviewing an ambiguous requirement | Executing an API request and checking its response |
+| Test object | Documents, code, and other work products | Executable software and its behavior |
 
-1. **Testing is broader than test execution.**
-2. **A test object is the software artifact being tested.**
-3. **Testing can be static or dynamic.**
-4. **Static testing does not execute the software.**
-5. **Dynamic testing can trigger failures.**
-6. **Testing and debugging are separate activities.**
-7. **Testing identifies defects/failures; debugging investigates and removes their causes.**
-8. **Testing cannot prove the absence of defects.**
-9. **Testing supports risk reduction, confidence, and stakeholder decision-making.**
-10. **Testing requires both technical activities and appropriate planning, management, estimation, monitoring, and control.**
+### Example
+
+A tester identifies that a requirement does not define the expected response for an expired token.
+
+This is a defect identified through static testing.
+
+Later, an API test executes a request with an expired token and receives an incorrect response.
+
+This is dynamic testing that reveals a failure.
+
+### Exam Trap
+
+**Static testing does not mean testing without tools.**
+
+Static analysis tools can examine code without executing it.
+
+**Dynamic testing involves execution**, whereas static testing does not require execution of the software.
+
+---
+
+## 4. Testing and Debugging
+
+### Definition of Testing
+
+Testing evaluates a test object to discover defects, trigger failures, and provide information about quality.
+
+### Definition of Debugging
+
+Debugging is the development activity concerned with finding, analyzing, and removing the causes of failures or defects.
+
+**Testing and debugging are separate activities.**
+
+### Dynamic Testing Followed by Debugging
+
+When dynamic testing triggers a failure, debugging typically involves:
+
+1. Reproducing the failure.
+2. Diagnosing the root cause.
+3. Fixing the cause.
+
+### Example
+
+An API test expects a response status of `401 Unauthorized` for an invalid token but receives `200 OK`.
+
+**Testing activity:**
+- Executes the API request.
+- Compares the actual result with the expected result.
+- Reports the failure.
+
+**Debugging activity:**
+- Investigates the authentication logic.
+- Identifies why the invalid token was accepted.
+- Corrects the underlying defect.
+
+### Static Testing Followed by Debugging
+
+When static testing identifies a defect, debugging is concerned with removing it.
+
+Because static testing directly identifies a defect in a work product without executing the software, reproducing a runtime failure is not necessary to establish that particular static finding.
+
+### Key Differences
+
+| Aspect | Testing | Debugging |
+|---|---|---|
+| Primary purpose | Evaluate quality and identify defects or failures | Investigate causes and remove defects |
+| Typical responsibility | Tester or testing team | Developer or another person responsible for debugging |
+| Dynamic scenario | Detects a failure | Reproduces, diagnoses, and fixes the cause |
+| Static scenario | Identifies a defect in a work product | Removes the identified defect |
+| Output | Test results, findings, defect reports, quality information | Corrected code or another corrected work product |
+
+### Exam Traps
+
+- Testing can reveal a failure; it does not itself fix the defect.
+- Debugging investigates and removes the cause of a failure.
+- Testing and debugging are related but distinct activities.
+- A tester may also debug software in practice, but the activities remain conceptually distinct.
+
+---
+
+## 5. Testing Activities Beyond Execution
+
+Testing involves more than running test cases.
+
+| Activity | Purpose | Example |
+|---|---|---|
+| Planning | Define objectives, scope, approach, and resources | Plan regression testing for a release |
+| Analysis | Identify test conditions | Identify invalid-token scenarios |
+| Design | Develop test cases and expected results | Design API tests for token expiration |
+| Implementation | Prepare test procedures, data, and environments | Create automated tests and test data |
+| Execution | Run tests and evaluate results | Execute API automation |
+| Monitoring and control | Track progress and take corrective action | Investigate missed coverage or execution delays |
+| Completion | Record results and preserve useful test assets | Summarize defects and archive test results |
+
+The exact activities and their order depend on the project and lifecycle.
+
+### Exam Trap
+
+Testing activities are not necessarily performed once in a rigid sequence. In iterative and agile development, activities can overlap and be repeated.
+
+---
+
+## 6. Common Exam Traps
+
+| Incorrect Statement | Correct Understanding |
+|---|---|
+| Testing is only test execution | Testing includes a broader set of activities |
+| Testing only finds defects | Testing also evaluates quality, coverage, risk, and requirements |
+| Static testing requires executing software | Static testing does not require software execution |
+| Testing and debugging are identical | Testing evaluates; debugging investigates and removes causes |
+| Only executable code can be tested | Requirements, designs, and other work products can also be tested |
+| Testing is purely technical | Testing also involves planning, management, estimation, monitoring, and control |
+| Passing tests prove the software is perfect | Test results provide evidence, not proof of complete correctness |
+
+---
+
+## 7. Comparison and Revision Table
+
+| Concept | Remember This |
+|---|---|
+| Software testing | A set of activities to discover defects and evaluate quality |
+| Test object | The work product being tested |
+| Static testing | Evaluation without executing the software |
+| Dynamic testing | Evaluation involving execution of the software |
+| Test objective | The intended purpose of testing |
+| Testing | Evaluates behavior and quality, identifies defects or failures, and provides information |
+| Debugging | Finds, analyzes, and removes the causes of failures or defects |
+
+---
+
+## 8. Foundational CTFL-Style MCQs: Questions 1–12
+
+> These are original practice questions, not official ISTQB questions or verified past examination questions.
+
+### Question 1: Definition of Testing
+
+Which statement best describes software testing?
+
+A. Testing consists exclusively of executing test cases.  
+B. Testing is a set of activities intended to discover defects and evaluate the quality of work products.  
+C. Testing is the activity of fixing defects in source code.  
+D. Testing is performed only after software development is complete.
+
+### Question 2: Test Objects
+
+A tester reviews a requirements specification and identifies an ambiguous acceptance criterion.
+
+What is the requirements specification in this situation?
+
+A. A test object  
+B. A debugging result  
+C. A runtime failure  
+D. A test environment
+
+### Question 3: Test Objectives
+
+Which of the following is a typical test objective?
+
+A. Guaranteeing that no defects remain  
+B. Replacing all development activities  
+C. Providing information that supports release decisions  
+D. Fixing every defect found during execution
+
+### Question 4: Static Testing
+
+A tester reviews source code using a static analysis tool without executing the application.
+
+Which type of testing is being performed?
+
+A. Dynamic testing  
+B. Static testing  
+C. Debugging only  
+D. Acceptance testing necessarily
+
+### Question 5: Dynamic Testing
+
+A tester sends a request to an API, executes the application behavior, and compares the response with the expected result.
+
+Which activity is this?
+
+A. Static testing  
+B. Dynamic testing  
+C. Requirements inspection only  
+D. Debugging only
+
+### Question 6: Testing vs Debugging
+
+An automated test reveals that an invalid authentication token is accepted by the application.
+
+Which activity does the test execution represent?
+
+A. Debugging  
+B. Testing  
+C. Root-cause removal  
+D. Code correction
+
+### Question 7: Debugging
+
+After an automated test reveals an authentication failure, a developer investigates the code and corrects the underlying condition.
+
+Which activity is the developer performing?
+
+A. Test design only  
+B. Static testing only  
+C. Debugging  
+D. Test execution only
+
+### Question 8: Verification Objective
+
+A tester checks whether the application enforces the password-length requirement specified in the requirements document.
+
+What is the main objective?
+
+A. Verifying specified requirements  
+B. Fixing the implementation  
+C. Estimating the project budget  
+D. Guaranteeing the absence of defects
+
+### Question 9: Coverage Objective
+
+A team checks whether all specified payment methods are represented in its test suite.
+
+Which test objective is most directly relevant?
+
+A. Debugging  
+B. Ensuring required coverage  
+C. Removing root causes  
+D. Replacing requirements analysis
+
+### Question 10: Stakeholder Decisions
+
+A test manager reports unresolved high-impact defects to the release manager before deployment.
+
+Which test objective is most directly supported?
+
+A. Providing information for informed decisions  
+B. Proving defect absence  
+C. Eliminating the need for release management  
+D. Executing all possible tests
+
+### Question 11: Testing Activities
+
+Which activity involves identifying test conditions from a test basis?
+
+A. Test analysis  
+B. Debugging  
+C. Defect fixing  
+D. Production deployment
+
+### Question 12: Failure Investigation
+
+A dynamic test triggers a failure. The team reproduces it, diagnoses its cause, and corrects the defect.
+
+Which sequence is most appropriate?
+
+A. Debugging, test planning, test design  
+B. Test execution followed by debugging activities  
+C. Static analysis followed by release approval only  
+D. Test completion followed by requirements gathering only
+
+---
+
+## 9. Advanced Scenario-Based MCQs: Questions 13–32
+
+### Question 13: Testing Is More Than Execution
+
+A QA engineer spends time reviewing requirements, designing test cases, preparing data, executing tests, and reporting quality risks. A manager says only the execution time counts as testing.
+
+Which statement is most accurate?
+
+A. The manager is correct because only executed tests are testing.  
+B. Only automated test execution counts as testing.  
+C. Testing includes multiple activities beyond execution.  
+D. Requirements reviews are always debugging activities.
+
+### Question 14: A Document Can Be Tested
+
+A tester identifies contradictory business rules in a design document before any code is written.
+
+Which statement best describes the situation?
+
+A. Testing cannot occur until executable code exists.  
+B. The design document can be a test object.  
+C. The tester must execute the design document.  
+D. The finding is necessarily a runtime failure.
+
+### Question 15: Static Analysis Finding
+
+A static analysis tool identifies a potentially unsafe operation in source code without running the program.
+
+Which statement is correct?
+
+A. This is dynamic testing because source code exists.  
+B. This is static testing because the software was not executed.  
+C. This is debugging because the tool automatically identifies a problem.  
+D. This proves that the application will fail in production.
+
+### Question 16: Dynamic Failure
+
+An API test sends a request with an expired token. The application returns a success response instead of the expected authentication error.
+
+What has the test most directly demonstrated?
+
+A. A failure in the observed behavior  
+B. The root cause has been removed  
+C. The application is defect-free  
+D. The requirement has been corrected
+
+### Question 17: Correcting a Defect
+
+After a test reveals a failure, a developer inspects the authentication code, identifies the incorrect condition, and corrects it.
+
+Which activity is primarily being performed?
+
+A. Test planning  
+B. Debugging  
+C. Test completion  
+D. Test estimation
+
+### Question 18: Test Objective vs Debugging
+
+A team executes tests to determine whether a new application meets its specified requirements. Developers later investigate and fix the defects identified.
+
+Which statement is correct?
+
+A. Both activities are debugging.  
+B. Both activities are test execution.  
+C. Testing evaluates the application; debugging investigates and removes defects.  
+D. Testing begins only after debugging is complete.
+
+### Question 19: Release Decision
+
+A test report shows that critical transaction scenarios have not passed. The release manager uses this information to postpone deployment.
+
+Which test objective is most directly illustrated?
+
+A. Providing information for informed decisions  
+B. Guaranteeing defect absence  
+C. Removing every root cause  
+D. Replacing all requirements
+
+### Question 20: Requirements Review
+
+A tester participates in a user-story review and identifies an unclear acceptance criterion before development begins.
+
+Which conclusion is correct?
+
+A. Testing cannot begin until the feature is implemented.  
+B. The review can contribute to testing and early defect detection.  
+C. The tester is performing dynamic testing.  
+D. The tester has necessarily debugged the application.
+
+### Question 21: Test Coverage
+
+A team reports that all planned scenarios for the specified payment methods have been covered, but several tests have failed.
+
+Which statement is most accurate?
+
+A. Required coverage and successful test results are different considerations.  
+B. Coverage can be claimed only if every test passes.  
+C. Failed tests automatically mean no coverage exists.  
+D. Coverage guarantees defect absence.
+
+### Question 22: Testing Is Not Only Technical
+
+A test lead estimates the effort required, monitors progress, manages risks, and reports test status to stakeholders.
+
+Which statement is correct?
+
+A. These are unrelated to testing.  
+B. These activities can be part of testing management and control.  
+C. They are exclusively debugging activities.  
+D. They are possible only after release.
+
+### Question 23: Multiple Test Objectives
+
+A team evaluates requirements, tests transaction behavior, assesses coverage, and reports remaining risks.
+
+Which statement best describes the team's work?
+
+A. The team is pursuing several legitimate test objectives.  
+B. Only defect detection is a valid test objective.  
+C. The team is performing debugging exclusively.  
+D. Risk assessment is never relevant to testing.
+
+### Question 24: Incorrect Classification of Debugging
+
+A tester reports that a payment calculation produces an incorrect total. A developer then investigates the calculation logic.
+
+Which statement best distinguishes the activities?
+
+A. The tester is debugging, while the developer is necessarily performing test execution.  
+B. Both activities are identical.  
+C. The tester is reporting a test finding, while the developer is investigating the cause through debugging.  
+D. Neither activity is related to software quality.
+
+### Question 25: A Test Object Without Execution
+
+A reviewer examines a test plan and finds that a critical requirement is missing from the planned coverage.
+
+Which statement is correct?
+
+A. The test plan cannot be a test object.  
+B. Static evaluation can identify defects in testing work products.  
+C. The reviewer must run the entire application.  
+D. The finding proves that a production failure has occurred.
+
+### Question 26: Testing Objective and User Expectations
+
+A team evaluates whether a completed application works as expected by stakeholders, rather than checking only isolated technical requirements.
+
+Which test objective is most directly relevant?
+
+A. Validating stakeholder needs and expectations  
+B. Removing all source-code defects  
+C. Proving the absence of defects  
+D. Replacing debugging
+
+### Question 27: Execution Does Not Equal Debugging
+
+An automated test reports an incorrect API response. The tester logs the actual response and raises a defect report without modifying the application.
+
+What is the most accurate classification?
+
+A. The tester has completed debugging.  
+B. The tester has performed a testing activity, not necessarily debugging.  
+C. The tester has removed the defect.  
+D. The test result proves the root cause.
+
+### Question 28: Static Testing and Runtime Failures
+
+A tester identifies an incorrect calculation formula in a spreadsheet used as a requirements artifact. The spreadsheet itself is reviewed without executing the software under test.
+
+Which statement is most accurate?
+
+A. Static testing can directly identify a defect in a work product.  
+B. Dynamic testing must have occurred.  
+C. The finding is necessarily a production failure.  
+D. The defect can be removed only by executing test cases.
+
+### Question 29: Test Objective of Compliance
+
+A team tests whether a financial application satisfies specified contractual and regulatory requirements.
+
+Which objective is most directly relevant?
+
+A. Verifying compliance with applicable requirements  
+B. Guaranteeing no defects remain  
+C. Debugging the application  
+D. Proving exhaustive coverage
+
+### Question 30: Test Planning and Control
+
+A team defines testing objectives and scope, estimates effort, monitors progress, and adjusts its plan when execution falls behind.
+
+Which statement is correct?
+
+A. Testing consists exclusively of executing test cases.  
+B. Planning, estimation, monitoring, and control can be part of testing.  
+C. These activities are necessarily defects.  
+D. These activities can occur only after debugging.
+
+### Question 31: Testing and Confidence
+
+A test team completes a planned regression cycle and shares the results with stakeholders. The results increase confidence in previously tested functionality, but the team makes no claim that every defect has been found.
+
+Which statement is most accurate?
+
+A. The team has misunderstood testing because it cannot prove defect absence.  
+B. Testing can build confidence without proving that no defects remain.  
+C. Confidence is never a test objective.  
+D. Only debugging can provide quality information.
+
+### Question 32: Complete Understanding of Testing
+
+Which statement best describes software testing?
+
+A. Testing is exclusively the execution of software to find failures.  
+B. Testing is exclusively the correction of defects.  
+C. Testing is a broader set of activities that evaluates work products, identifies defects or failures, and provides quality information for decisions.  
+D. Testing begins only after all software development activities are complete.
+
+---
+
+## 10. Answer Key and Explanations
+
+### Questions 1–12
+
+| Q | Answer | Explanation |
+|---:|:---:|---|
+| 1 | B | Testing includes activities to discover defects and evaluate work-product quality. |
+| 2 | A | The requirements specification is the work product being evaluated. |
+| 3 | C | Testing provides information that supports informed stakeholder decisions. |
+| 4 | B | Static analysis does not require executing the software. |
+| 5 | B | Executing an API request and evaluating its behavior is dynamic testing. |
+| 6 | B | The automated test reveals the failure; it does not itself fix the cause. |
+| 7 | C | Investigating and correcting the underlying cause is debugging. |
+| 8 | A | The tester is checking conformance to a specified requirement. |
+| 9 | B | The team is evaluating required coverage. |
+| 10 | A | The report helps stakeholders make an informed release decision. |
+| 11 | A | Test analysis identifies test conditions from the test basis. |
+| 12 | B | Dynamic testing reveals a failure, after which debugging investigates and corrects its cause. |
+
+### Questions 13–32
+
+| Q | Answer | Explanation |
+|---:|:---:|---|
+| 13 | C | Testing includes planning, analysis, design, implementation, execution, monitoring, control, and completion activities. |
+| 14 | B | Documents and designs can be test objects even before executable code exists. |
+| 15 | B | Static analysis evaluates code without executing the software. |
+| 16 | A | The observed behavior differs from the expected behavior, demonstrating a failure. |
+| 17 | B | Investigating and correcting the underlying cause is debugging. |
+| 18 | C | Testing evaluates quality and identifies findings; debugging investigates and removes causes. |
+| 19 | A | The test report supports a release decision. |
+| 20 | B | Reviewing requirements can identify defects before implementation. |
+| 21 | A | Coverage and test pass/fail status are different considerations. |
+| 22 | B | Estimation, monitoring, management, and control can be part of testing. |
+| 23 | A | Testing has multiple objectives beyond defect detection. |
+| 24 | C | Reporting a finding and investigating its root cause are distinct activities. |
+| 25 | B | A test plan is a work product that can be evaluated statically. |
+| 26 | A | The team is evaluating whether the product meets stakeholder expectations. |
+| 27 | B | Reporting a test finding does not necessarily involve debugging. |
+| 28 | A | Static testing can directly identify a defect in a work product. |
+| 29 | A | The team is evaluating compliance with contractual and regulatory requirements. |
+| 30 | B | Testing includes planning, estimation, monitoring, and control. |
+| 31 | B | Testing can increase confidence without proving defect absence. |
+| 32 | C | Testing is broader than execution and provides information about quality. |
+
+---
+
+## 11. How to Review Your Mistakes
+
+| Mistake Type | What to Revise |
+|---|---|
+| Definition error | Section 1 |
+| Confusing objectives | Section 2 |
+| Static vs dynamic confusion | Section 3 |
+| Testing vs debugging confusion | Section 4 |
+| Forgetting testing activities | Section 5 |
+| Misreading a scenario | Reattempt Questions 13–32 |
+
+### Score Guide: Questions 1–12
+
+| Score | Recommended Action |
+|---:|---|
+| 11–12 / 12 | Strong understanding |
+| 9–10 / 12 | Review missed questions |
+| 7–8 / 12 | Revisit concepts and examples |
+| 0–6 / 12 | Re-study the topic |
+
+### Score Guide: Questions 13–32
+
+| Score | Recommended Action |
+|---:|---|
+| 18–20 / 20 | Strong application skills |
+| 15–17 / 20 | Review confusing scenarios |
+| 11–14 / 20 | Revisit testing objectives and terminology |
+| 0–10 / 20 | Re-study the topic before proceeding |
+
+These are study guidelines, not predictions of the official examination result.
+
+---
+
+## 12. Quick Revision Sheet
+
+- **Testing:** A set of activities intended to discover defects and evaluate quality.
+- **Test object:** The work product being tested.
+- **Test objectives:** The intended purposes of testing.
+- **Static testing:** Evaluation without executing the software.
+- **Dynamic testing:** Evaluation involving execution of the software.
+- **Testing:** Evaluates quality, identifies defects or failures, and provides information.
+- **Debugging:** Investigates and removes the causes of failures or defects.
+
+### Important Distinctions
+
+| If the scenario describes... | Think of... |
+|---|---|
+| Reviewing a requirement without execution | Static testing |
+| Executing an API request | Dynamic testing |
+| Comparing actual and expected results | Test execution |
+| Investigating why a failure occurred | Debugging |
+| Fixing the underlying cause | Debugging |
+| Reporting quality risks to a release manager | Supporting stakeholder decisions |
+| Reviewing test coverage | Test analysis or coverage evaluation |
+| Estimating and monitoring test effort | Testing management activities |
+
+---
+
+## 13. Self-Assessment Checklist
+
+- [ ] I can define software testing accurately.
+- [ ] I understand what a test object is.
+- [ ] I can recall the typical test objectives.
+- [ ] I can distinguish static from dynamic testing.
+- [ ] I can explain why testing is more than execution.
+- [ ] I can distinguish testing from debugging.
+- [ ] I understand how testing and debugging interact.
+- [ ] I can recognize test activities from scenarios.
+- [ ] I can explain why test results support decisions without proving complete correctness.
+- [ ] I can score at least 10/12 on the foundational MCQs.
+- [ ] I can score at least 18/20 on the advanced MCQs.
+
+---
+
+## 14. Final Exam Takeaways
+
+1. Testing is a set of activities, not just test execution.
+2. A test object is the work product being tested.
+3. Testing objectives include defect detection, coverage, risk reduction, verification, compliance, confidence, and stakeholder decision support.
+4. Static testing does not require executing the software.
+5. Dynamic testing evaluates software behavior through execution.
+6. Testing and debugging are distinct activities.
+7. Testing can reveal a failure; debugging investigates and removes its cause.
+8. Requirements, designs, code, and other work products can be evaluated.
+9. Testing involves planning, management, estimation, monitoring, and control.
+10. Test results provide useful quality information without proving that no defects remain.
