@@ -1,675 +1,984 @@
-2.3 Maintenance Testing
-1. Learning Objectives
-   By the end of this topic, you should be able to:
-- Explain what maintenance testing is and why it is needed.
-- Identify the common triggers for maintenance testing.
-- Understand the different categories of maintenance.
-- Explain the role of impact analysis.
-- Identify factors that influence the scope of maintenance testing.
-- Differentiate testing of a change from regression testing of the
-  unchanged parts of a system.
-2. What is Maintenance Testing?
-   Definition: Maintenance testing is testing performed on an existing
-   software system after it has been delivered and put into operation, when
-   changes are made to it or when it is being retired.
+# 2.3 Maintenance Testing
+**ISTQB CTFL v4.0.1 — Chapter 2: Testing Throughout the SDLC**
 
-Maintenance testing may be required because of:
-- Modifications to the software.
-- Changes in the operational environment.
-- Retirement of the system.
-  The purpose is to evaluate the success of the changes and to check that
-  the changes have not caused unintended effects in parts of the system
-  that remain unchanged.
-  Example
-  A banking application is already live in production.
+**Scope:** Maintenance testing, reasons for maintenance testing, maintenance triggers, impact analysis and factors influencing the scope of maintenance testing.
 
-A new feature is introduced to support international fund transfers.
+---
 
-The testing team must:
-1. Test the new international transfer functionality.
-2. Verify that the existing domestic transfer functionality still
-   works.
-3. Check whether other affected features, such as transaction history
-   and account balance updates, continue to work correctly.
-   This is maintenance testing.
+## Learning Objective
 
-Remember: Maintenance testing is performed on an existing system,
-not only during initial development.
-3. Categories of Maintenance
-   Maintenance can be performed for different reasons. The important
-   categories include:
-   3.1 Corrective Maintenance
-   Performed to correct defects discovered after the software has been
-   delivered.
+| LO Code | Learning Objective | K-Level |
+|---|---|---|
+| FL-2.3.1 | Summarize maintenance testing and its triggers. | K2 |
 
-Example: A production application calculates tax incorrectly. A
-hotfix is released to correct the calculation.
-3.2 Adaptive Maintenance
-Performed to adapt the software to changes in its operational
-environment.
+**Source basis:** These notes follow the maintenance-testing slide images you supplied. Additional explanations and practice questions are included for exam preparation.
 
-Example: - Migrating an application to a new operating system. -
-Updating an application to work with a new database version. - Adapting
-software to a new browser or platform.
-3.3 Perfective Maintenance
-Performed to improve performance, maintainability, or other aspects of
-the software.
+---
 
-Example: - Optimizing a slow database query. - Improving application
-response time. - Refactoring code to make future maintenance easier.
-3.4 Preventive Maintenance
-Performed to reduce the likelihood of future problems and improve the
-maintainability or reliability of the system.
+# 1. What is Maintenance Testing?
 
-Example: Refactoring a fragile module or updating an outdated
-dependency before it causes production failures.
-Category                Main purpose            Example
-Corrective              Fix an existing defect  Hotfix for incorrect
-tax calculation
+**Maintenance testing** is testing performed on an existing software system after it has been deployed, to evaluate changes made to the system or its environment and to ensure that the existing functionality continues to work correctly.
 
-Adaptive                Adapt to environment    Migration to a new
-changes                 operating system
+Maintenance testing is required whenever an existing system is modified, migrated, upgraded or retired.
 
-Perfective              Improve performance or  Optimize a slow query
-maintainability         
-Preventive              Reduce future risk or   Refactor fragile code
-avoid potential
-problems
-Exam trap: Read the reason for the change carefully. - Fixing an
-existing defect → Corrective. - Adapting to a changed environment →
-Adaptive. - Improving performance or maintainability → Perfective. -
-Reducing the likelihood of future problems → Preventive.
-4. Triggers for Maintenance Testing
-   Maintenance and maintenance testing may be triggered by three major
-   situations.
-   4.1 Modifications
-   Modifications may include:
-- Planned enhancements (release-based changes).
+### Why is Maintenance Testing Required?
+
+Software systems undergo changes throughout their operational life.
+
+Examples include:
+
+- Adding new features.
+- Fixing defects.
+- Improving performance.
+- Adapting software to a new operating system.
+- Migrating to a new database.
+- Upgrading infrastructure.
+- Retiring an application.
+
+These changes can introduce new defects or adversely affect existing functionality.
+
+Therefore, maintenance testing typically includes:
+
+1. Testing the changes made to the system.
+2. Checking for possible regressions in unchanged parts of the system.
+
+### Practical Example – Banking Application
+
+Consider an existing banking application.
+
+A new feature is introduced that allows customers to schedule recurring payments.
+
+Testing should cover:
+
+- Whether recurring payments can be scheduled successfully.
+- Whether the payment frequency is correctly applied.
+- Whether the payment executes on the scheduled date.
+- Whether existing one-time payments continue to work.
+- Whether account balances and transaction histories remain correct.
+
+The first group verifies the new functionality. The second group checks for regression.
+
+---
+
+# 2. Categories of Maintenance
+
+Maintenance can be classified into different categories.
+
+| Maintenance Category | Meaning | Example |
+|---|---|---|
+| Corrective | Fixing defects identified in the existing system. | Fixing a payment failure bug. |
+| Adaptive | Modifying software to accommodate changes in the environment. | Updating an application to support a new operating system. |
+| Perfective | Improving performance, maintainability or other characteristics. | Optimizing database queries to improve response time. |
+| Preventive | Modifying software to reduce the possibility of future problems. | Refactoring complex code to improve maintainability. |
+
+### Understanding Each Category
+
+**1. Corrective Maintenance**
+
+Performed to correct defects in an existing system.
+
+Example:
+- A customer cannot complete a payment because of a calculation defect.
+- Developers fix the calculation.
+- Testers perform confirmation testing and regression testing.
+
+**2. Adaptive Maintenance**
+
+Performed to adapt software to changes in its operational environment.
+
+Example:
+- An application is migrated from one database platform to another.
+- Testers validate compatibility and data migration.
+
+**3. Perfective Maintenance**
+
+Performed to improve the system or enhance its performance and maintainability.
+
+Example:
+- Optimizing an API that takes five seconds to respond.
+- Improving an existing user interface.
+
+**4. Preventive Maintenance**
+
+Performed to prevent potential future problems.
+
+Example:
+- Refactoring complex code.
+- Removing obsolete dependencies.
+- Improving code structure to reduce future maintenance risks.
+
+---
+
+# 3. Planned and Unplanned Maintenance Releases
+
+Maintenance can involve both planned and unplanned releases or deployments.
+
+| Type | Meaning | Example |
+|---|---|---|
+| Planned Maintenance | Changes scheduled as part of a planned release or deployment. | A monthly release containing new features and improvements. |
+| Unplanned Maintenance | Changes deployed urgently, often as hot fixes. | An emergency production fix for a critical payment defect. |
+
+### Hot Fix
+
+A **hot fix** is an urgent software change released to address a critical issue, usually without waiting for the normal release cycle.
+
+Example:
+
+A production application stops processing payments.
+
+The development team prepares an urgent fix and deploys it immediately.
+
+Testing should verify:
+
+- The original issue has been resolved.
+- The fix has not introduced new defects.
+- Critical existing functionality remains operational.
+
+**Exam Point:** A hot fix is an example of unplanned maintenance.
+
+---
+
+# 4. Impact Analysis in Maintenance Testing
+
+**Impact analysis** is performed to identify the potential consequences of a proposed change in other areas of the system.
+
+It helps the team decide:
+
+- Whether a change should be implemented.
+- Which components may be affected.
+- Which interfaces may be impacted.
+- Which existing test cases should be executed.
+- How much regression testing is required.
+
+### Why is Impact Analysis Important?
+
+A change in one component can affect other components or connected systems.
+
+Example:
+
+An application changes its authentication mechanism from password-based authentication to OAuth.
+
+Potentially affected areas:
+
+- Login functionality.
+- API authorization.
+- Session management.
+- Token refresh.
+- Mobile application authentication.
+- Third-party integrations.
+
+Impact analysis helps identify the scope of required testing.
+
+### Impact Analysis Workflow
+
+1. Understand the proposed change.
+2. Identify the components and interfaces affected.
+3. Identify dependent systems and integrations.
+4. Assess the associated risks.
+5. Determine the required confirmation and regression testing.
+6. Prioritize the test execution.
+
+**Exam Trap:** Impact analysis helps determine the scope of regression testing. It does not itself confirm that the change works correctly.
+
+---
+
+# 5. Testing Changes in a Production System
+
+Testing changes to a system in production includes two important activities:
+
+1. Evaluating the success of the implementation of the change.
+2. Checking for possible regressions in parts of the system that remain unchanged.
+
+Usually, most of the existing system remains unchanged when a modification is introduced.
+
+Therefore, maintenance testing must consider both the changed and unchanged parts of the system.
+
+### Practical Example – E-commerce Application
+
+An e-commerce platform introduces a new discount calculation mechanism.
+
+**Testing the changed functionality:**
+
+- Verify discount calculations.
+- Verify coupon validation.
+- Verify the final payable amount.
+
+**Testing unchanged functionality:**
+
+- Verify payment processing.
+- Verify order creation.
+- Verify inventory updates.
+- Verify refund processing.
+
+A change in discount calculation could unintentionally affect the final payment amount or order processing.
+
+---
+
+# 6. Scope of Maintenance Testing
+
+The scope of maintenance testing typically depends on three factors:
+
+| Factor | Explanation | Example |
+|---|---|---|
+| Degree of risk of the change | Higher-risk changes generally require broader and deeper testing. | Changes to payment processing require extensive testing. |
+| Size of the existing system | Larger systems may have more dependencies and interactions to consider. | A banking platform with multiple integrated services. |
+| Size of the change | Larger changes may affect more components and require broader testing. | Replacing an entire authentication module rather than changing a single validation rule. |
+
+### Important Exam Point
+
+The scope of maintenance testing is influenced by:
+
+- Risk associated with the change.
+- Size of the existing system.
+- Size of the change.
+
+Do not confuse these factors with the triggers for maintenance testing.
+
+---
+
+# 7. Triggers for Maintenance Testing
+
+The triggers for maintenance and maintenance testing can be classified into three main categories:
+
+1. Modifications.
+2. Upgrades or migrations of the operational environment.
+3. Retirement of a system.
+
+## 7.1 Modifications
+
+Modifications include:
+
+- Planned enhancements.
 - Corrective changes.
 - Hot fixes.
-  Example: A company adds a new payment method to its existing
-  application. Testing is required for the new functionality and for
-  possible side effects on existing payment methods.
-  4.2 Upgrades or Migrations of the Operational Environment
-  Changes to the operational environment may include moving from one
-  platform to another.
 
-This may require:
-- Testing the changed software in the new environment.
-- Testing compatibility with the new environment.
-- Testing data conversion when data from another application is
-  migrated into the maintained system.
-  Example: An application is migrated from an on-premises database to
-  a cloud database. Testing must cover the migrated application, the new
-  environment, and the correctness of converted data.
-  4.3 Retirement
-  Maintenance testing may also be required when an application reaches the
-  end of its life and is retired.
+Examples:
 
-This may require:
-- Testing data archiving.
-- Checking that long-term data-retention requirements are met.
-- Testing restoration procedures.
-- Testing retrieval procedures to ensure archived data can be accessed
-  when required.
-  Example: A company retires an old payroll application but must
-  retain employee salary records for a legally required retention period.
-  The team tests whether records are archived and can be retrieved when
-  needed.
-  Quick comparison of triggers
-  Trigger                 What causes it?         Example
-  Modification            A change or fix to the  New feature or hotfix
-  existing software
+**Planned Enhancement**
 
-  Upgrade / Migration     A change in the         New OS, platform,
-  operational environment database, or data
-  or movement of data     conversion
-  Retirement              The system reaches end  Archiving and
-  of life                 retrieving historical
-  records
-  Exam trap: Retirement does not mean that no testing is needed. Data
-  archiving, restoration, and retrieval may still need to be tested.
-5. What Does Maintenance Testing Cover?
-   Maintenance testing generally includes two important aspects:
-   5.1 Testing the Change
-   Evaluate whether the modification has been implemented successfully.
+A banking application introduces a new feature that allows customers to download account statements in PDF format.
 
-Examples: - Does the new feature work? - Has the reported defect been
-fixed? - Does the application work in the upgraded environment? - Has
-data been converted correctly?
-5.2 Testing for Regression
-Check for possible regressions in parts of the system that remain
-unchanged.
+**Corrective Change**
 
-A change may affect other parts of the application even when those parts
-were not directly modified.
+A defect causing incorrect tax calculations is fixed.
 
-Example: A change to the payment calculation module may
-unintentionally affect: - Order totals. - Invoices. - Refund
-calculations. - Transaction reports.
+**Hot Fix**
 
-Therefore, maintenance testing includes testing the change as well as
-checking for unintended consequences in unchanged areas.
+A critical production issue is fixed through an emergency deployment.
 
-Important distinction:
-- Testing the changed functionality checks whether the change works.
-- Regression testing checks whether the change has adversely affected
-  existing functionality.
-6. Impact Analysis
-   Definition: Impact analysis is performed before a change is made to
-   help determine whether the change should be implemented, based on its
-   potential consequences in other areas of the system.
+In all these situations, maintenance testing is required.
 
-It helps identify which parts of the system may be affected by a
-proposed change.
-Why is impact analysis important?
-1. Identifies areas that may be affected by a change.
-2. Helps estimate the scope of testing.
-3. Helps identify potential risks.
-4. Supports decisions about whether a change should be made.
-5. Helps select relevant regression tests.
-   Example
-   A team plans to modify a shared authentication service.
+## 7.2 Upgrades or Migrations of the Operational Environment
 
-Impact analysis may identify these dependent areas:
-- Login.
-- Password reset.
-- Session management.
-- Multi-factor authentication.
-- API authentication.
-  The test team can use this information to plan appropriate testing.
+An operational environment may be upgraded or migrated from one platform to another.
 
-Exam trap: Impact analysis is not itself the execution of regression
-tests. It is an analysis activity used to understand possible
-consequences and guide decisions and test scope.
-7. Factors That Determine the Scope of Maintenance Testing
-   The scope of maintenance testing typically depends on three factors:
-   7.1 Degree of Risk of the Change
-   A high-risk change may require more extensive testing.
+This can require testing of:
 
-Example: Changing the payment processing logic is likely to require
-broader testing than changing the text on a help page.
-7.2 Size of the Existing System
-A larger system may have more components, dependencies, and interactions
-that could be affected.
+- The new operational environment.
+- The changed software.
+- Data conversion.
+- Compatibility with the new platform.
 
-Example: A change to a shared service in a large banking platform
-may require testing several dependent modules.
-7.3 Size of the Change
-A larger change may affect more functionality and require a wider test
-scope.
+### Example – Database Migration
 
-Example: Replacing an entire authentication module is likely to
-require more testing than correcting a small label.
-Factor                              What to consider
-Risk of the change                  How serious are the possible
-consequences?
+An organization migrates its application database from Oracle to PostgreSQL.
 
-Size of the existing system         How large and interconnected is the
-system?
-Size of the change                  How much functionality or code is
-being changed?
-Memory aid: Maintenance test scope = Risk + Existing system size +
-Change size.
+Testing may include:
 
-Exam trap: Do not confuse the size of the existing system with the
-size of the change. They are separate factors.
-8. Planned Releases vs Unplanned Releases
-   Maintenance can involve both planned and unplanned releases or
-   deployments.
-   Planned release / deployment        Unplanned release / deployment
-   Scheduled and prepared in advance   Usually performed urgently
+- Database connectivity.
+- Data migration accuracy.
+- Data integrity.
+- Query compatibility.
+- Application functionality.
+- Performance in the new environment.
 
-Often includes planned enhancements Often includes urgent corrective
-changes
-Example: Scheduled feature release  Example: Production hotfix
-A hotfix is an example of an unplanned release or deployment used to
-address an urgent issue.
+### Example – Operating System Upgrade
 
-Important: Both planned and unplanned maintenance changes require
-appropriate testing.
-9. Maintenance Testing vs Development Testing
-   Development testing                 Maintenance testing
-   Performed while the software is     Performed on an existing system
-   being developed                     after delivery
+A mobile application is updated to support a newer Android version.
 
-Tests newly developed software and  Tests changes to an operational or
-components                          existing system
+Testing should verify:
 
-Focuses on verifying the system     Focuses on validating changes and
-during development                  checking for regressions
-Example: Testing a newly developed  Example: Testing a production login
-login module                        module after a security fix
-10. Maintenance Testing --- End-to-End Example
-    Consider a live e-commerce application.
+- Application compatibility.
+- Installation and upgrade behavior.
+- Device permissions.
+- Notifications.
+- Existing functionality.
 
-The organization makes the following changes:
-1. Adds a new payment gateway.
-2. Migrates the application to a new cloud platform.
-3. Retires an old order management module.
-   The maintenance testing activities may include:
-   Change                              Testing required
-   New payment gateway                 Test the new integration and check
-   existing payment methods for
-   regressions
+**Important:** Environment migration may require testing both the new environment and the changed software.
 
-Cloud migration                     Test compatibility, application
-behavior, and data migration
-Retirement of old module            Test data archiving, restoration,
-and retrieval
-This example demonstrates that maintenance testing is not limited to
-fixing defects. It also applies to enhancements, environment changes,
-migrations, and retirement.
-11. Exam Traps and Important Distinctions
-    Statement                           Correct understanding
-    Maintenance testing is performed on Correct
-    an existing system
+## 7.3 Retirement of a System
 
-Maintenance testing is required     Incorrect
-only for defect fixes
+Maintenance testing may also be required when an application reaches the end of its life.
 
-Planned enhancements can trigger    Correct
-maintenance testing
+When a system is retired, testing may include:
 
-Hotfixes can trigger maintenance    Correct
-testing
+- Data archiving.
+- Data retention.
+- Data restoration.
+- Data retrieval procedures.
 
-Environment upgrades or migrations  Correct
-can trigger maintenance testing
+### Example – Application Retirement
 
-Retirement can require testing      Correct
+An organization retires an old payroll application but must retain employee payroll records for several years.
 
-Data archiving and retrieval may    Correct
-need testing during retirement
+Testing may be required to verify:
 
-Maintenance testing checks only the Incorrect
-changed functionality
+- Whether data is archived correctly.
+- Whether archived records can be retrieved.
+- Whether data remains complete and accurate.
+- Whether restoration procedures work when required.
 
-Regression testing may be needed    Correct
-for unchanged parts of the system
+**Exam Trap:** Retirement does not mean testing is unnecessary. Data archiving, restoration and retrieval may still require testing.
 
-Impact analysis can help decide     Correct
-whether a change should be made
+---
 
-Impact analysis identifies possible Correct
-consequences in other areas         
-The scope depends on risk, existing Correct
-system size, and change size
-12. High-Value Revision Table
-    Term                                One-line revision
-    Maintenance Testing                 Testing an existing system after
-    changes or during retirement
+# 8. Maintenance Testing – Complete Summary Table
 
-Corrective Maintenance              Fixing defects
+| Trigger | What Happens? | Testing Focus |
+|---|---|---|
+| Modifications | Planned enhancements, corrective changes or hot fixes. | Test changed functionality and check for regressions. |
+| Upgrades or migrations | Changes to the operational environment or migration to another platform. | Test the new environment, changed software and data conversion. |
+| Retirement | Application reaches the end of its life. | Test data archiving, restoration and retrieval procedures. |
 
-Adaptive Maintenance                Adapting to environment changes
+---
 
-Perfective Maintenance              Improving performance or
-maintainability
+# 9. Maintenance Testing vs Development Testing
 
-Preventive Maintenance              Reducing future problems or risks
+| Basis | Development Testing | Maintenance Testing |
+|---|---|---|
+| Purpose | Tests software during its development. | Tests changes to an existing system and their impact. |
+| Timing | During development. | After deployment, when changes or retirement activities occur. |
+| Main Focus | Verifying newly developed software. | Testing modifications and checking for regressions. |
+| Triggers | Development activities and new functionality. | Modifications, environment upgrades/migrations and retirement. |
+| Regression Testing | May be performed when changes are introduced. | Particularly important because existing functionality must continue to work. |
 
-Modification                        Planned enhancement, corrective
-change, or hotfix
+---
 
-Upgrade / Migration                 Change in operational environment
-or movement of data
+# 10. SDET Practical Scenarios
 
-Retirement                          End-of-life activities, including
-data archiving
+### Scenario 1 – Production Hot Fix
 
-Impact Analysis                     Assessing possible consequences of
-a change
+A payment application has a production defect. Developers release a hot fix.
 
-Regression Testing                  Checking for adverse effects in
-unchanged areas
-Maintenance Test Scope              Influenced by risk, existing system
-size, and change size
-13. Practice MCQs --- Foundational (10 Questions)
-    Q1. What is the primary context in which maintenance testing is performed?
-    A. Before requirements are documented
-    B. On an existing system after delivery when changes are made or the
-    system is retired
-    C. Only during component development
-    D. Only before the first production release
-    Q2. Which of the following is a trigger for maintenance testing?
-    A. Only new software development
-    B. Modifications to an existing system
-    C. Only creation of test cases
-    D. Only unit testing
-    Q3. Which maintenance category involves fixing defects discovered after delivery?
-    A. Adaptive
-    B. Perfective
-    C. Corrective
-    D. Preventive
-    Q4. Updating an application to work with a new operating system is an example of:
-    A. Corrective maintenance
-    B. Adaptive maintenance
-    C. Retirement
-    D. User acceptance testing
-    Q5. Improving application performance by optimizing database queries is an example of:
-    A. Perfective maintenance
-    B. Corrective maintenance
-    C. Retirement
-    D. System integration testing
-    Q6. Which of the following is an example of a maintenance testing trigger related to retirement?
-    A. Adding a new feature
-    B. Fixing a production defect
-    C. Testing data archiving and retrieval
-    D. Migrating to a new operating system
-    Q7. What is the purpose of impact analysis?
-    A. To execute all regression tests
-    B. To identify possible consequences of a change in other areas of the
-    system
-    C. To confirm that a defect has been fixed
-    D. To replace maintenance testing
-    Q8. Which of the following is NOT one of the stated factors affecting the scope of maintenance testing?
-    A. Degree of risk of the change
-    B. Size of the existing system
-    C. Size of the change
-    D. Number of developers assigned to the project
-    Q9. Maintenance testing after a software change should include:
-    A. Only testing the changed functionality
-    B. Only testing unchanged functionality
-    C. Testing the change and checking for possible regressions
-    D. Only performance testing
-    Q10. Which type of release is commonly associated with an urgent production correction?
-    A. Planned feature release
-    B. Hotfix
-    C. Retirement release only
-    D. Beta release
-14. Practice MCQs --- Scenario-Based (15 Questions)
-    Q11.
-    A production application calculates interest incorrectly. The
-    development team releases an urgent fix to correct the calculation.
+As an SDET, you should:
 
-Which maintenance category best describes this change?
+1. Understand the defect and the fix.
+2. Execute confirmation testing for the original issue.
+3. Identify potentially affected components.
+4. Execute appropriate regression tests.
+5. Verify critical payment workflows.
 
-A. Adaptive
-B. Corrective
-C. Perfective
-D. Preventive
-Q12.
-A company moves its application from an older operating system to a
-newer platform. The team tests compatibility with the new environment.
+### Scenario 2 – Database Migration
 
-Which maintenance category is most relevant?
+An application migrates from MySQL to PostgreSQL.
 
-A. Corrective
-B. Adaptive
-C. Perfective
-D. Preventive
-Q13.
-A development team optimizes database queries to improve application
-response time.
+Testing should cover:
+
+- Database connectivity.
+- Data conversion.
+- Data integrity.
+- SQL compatibility.
+- Application functionality.
+- Performance.
+- Existing integrations.
+
+This is maintenance testing triggered by an operational environment migration.
+
+### Scenario 3 – Application Retirement
+
+An organization retires an old HR application but must preserve employee records.
+
+Testing should verify:
+
+- Data archiving.
+- Data retention.
+- Retrieval of archived records.
+- Restoration procedures.
+
+This is maintenance testing triggered by system retirement.
+
+### Scenario 4 – Feature Enhancement
+
+An e-commerce application introduces a new coupon feature.
+
+Testing should cover:
+
+- New coupon functionality.
+- Coupon validation.
+- Discount calculations.
+- Existing checkout functionality.
+- Payment processing.
+- Order creation.
+
+This is maintenance testing triggered by a modification.
+
+---
+
+# 11. Exam Traps and Important Points
+
+1. Maintenance testing is performed on an existing system after deployment.
+2. Maintenance testing is not limited to defect fixes.
+3. Planned enhancements are maintenance triggers.
+4. Corrective changes and hot fixes are maintenance triggers.
+5. Upgrades and migrations of operational environments are maintenance triggers.
+6. Retirement of a system is also a maintenance trigger.
+7. Maintenance testing includes testing the change and checking for regressions.
+8. Impact analysis identifies the potential consequences of a change.
+9. Impact analysis helps determine the scope of regression testing.
+10. The scope depends on risk of change, size of the existing system and size of the change.
+11. Environment migration may require data conversion testing.
+12. System retirement may require testing of archiving, restoration and retrieval procedures.
+13. Hot fixes are examples of unplanned maintenance releases.
+14. Maintenance testing is not restricted to production bug fixes.
+15. Changes in the environment can trigger maintenance testing even when the application functionality itself has not changed significantly.
+
+---
+
+# 12. Quick Revision Table
+
+| Term | Key Point |
+|---|---|
+| Maintenance Testing | Testing an existing system after changes or maintenance activities. |
+| Corrective Maintenance | Fixing defects. |
+| Adaptive Maintenance | Adapting software to environmental changes. |
+| Perfective Maintenance | Improving performance or maintainability. |
+| Preventive Maintenance | Preventing potential future problems. |
+| Hot Fix | Urgent, usually unplanned production fix. |
+| Impact Analysis | Identifying potential consequences of a change. |
+| Planned Enhancement | A planned modification to an existing system. |
+| Environment Migration | Moving to another platform or environment. |
+| Retirement | End-of-life activities for an application. |
+| Data Archiving | Storing data for long-term retention. |
+| Data Retrieval | Accessing archived data when required. |
+| Scope of Maintenance Testing | Depends on risk, existing system size and change size. |
+
+---
+
+# 13. Practice Questions
+
+**Note:** These are original practice questions, not official ISTQB questions or verified past examination questions.
+
+## Section A – Core Concept MCQs
+
+### Q1. What is the primary purpose of maintenance testing?
+
+A. To test software only before its first release.
+
+B. To test changes to an existing system and check for possible regressions.
+
+C. To replace all development testing.
+
+D. To test only newly developed applications.
+
+### Q2. Which of the following is a maintenance testing trigger?
+
+A. Modifications to an existing system.
+
+B. Upgrades or migrations of the operational environment.
+
+C. Retirement of a system.
+
+D. All of the above.
+
+### Q3. Which of the following is an example of corrective maintenance?
+
+A. Moving an application to a new operating system.
+
+B. Fixing a defect in payment processing.
+
+C. Archiving an application before retirement.
+
+D. Improving code readability to prevent future problems.
+
+### Q4. Which maintenance category involves adapting software to changes in its operational environment?
+
+A. Corrective.
+
+B. Adaptive.
+
+C. Perfective.
+
+D. Preventive.
+
+### Q5. What is the purpose of impact analysis?
+
+A. To execute all regression tests.
+
+B. To identify the potential consequences of a change in other areas of the system.
+
+C. To confirm that the software is defect-free.
+
+D. To replace maintenance testing.
+
+### Q6. Which of the following is an example of unplanned maintenance?
+
+A. A scheduled monthly release.
+
+B. A planned feature enhancement.
+
+C. An emergency production hot fix.
+
+D. A planned database upgrade.
+
+### Q7. Which factor influences the scope of maintenance testing?
+
+A. Risk of the change.
+
+B. Size of the existing system.
+
+C. Size of the change.
+
+D. All of the above.
+
+### Q8. What should be tested when an operational environment is migrated?
+
+A. Only the changed software.
+
+B. Only the new environment.
+
+C. The new environment, changed software and potentially data conversion.
+
+D. Only the user interface.
+
+### Q9. Which of the following may require testing when an application is retired?
+
+A. Data archiving.
+
+B. Data restoration.
+
+C. Data retrieval.
+
+D. All of the above.
+
+### Q10. Which statement about maintenance testing is correct?
+
+A. It is required only for corrective changes.
+
+B. It can be triggered by modifications, environment changes and retirement.
+
+C. It is unnecessary when the application is already in production.
+
+D. It only tests new functionality.
+
+### Q11. What is a hot fix?
+
+A. A planned feature enhancement.
+
+B. An urgent software change, usually released outside the normal release cycle.
+
+C. A database migration.
+
+D. A data archiving procedure.
+
+### Q12. What is the primary focus of adaptive maintenance?
+
+A. Fixing existing functional defects.
+
+B. Adapting software to changes in its operational environment.
+
+C. Improving code readability only.
+
+D. Retiring the application.
+
+### Q13. What is the purpose of regression testing during maintenance?
+
+A. To confirm only that the original defect has been fixed.
+
+B. To ensure that a change has not adversely affected existing functionality.
+
+C. To test only newly introduced features.
+
+D. To validate the retirement of a system.
+
+### Q14. Which statement about impact analysis is correct?
+
+A. It identifies which parts of the system could be affected by a change.
+
+B. It guarantees that no regression defects will occur.
+
+C. It is performed only after deployment.
+
+D. It replaces confirmation testing.
+
+### Q15. Which of the following is NOT one of the three maintenance testing triggers described in this module?
+
+A. Modifications.
+
+B. Upgrades or migrations of the operational environment.
+
+C. Retirement.
+
+D. Initial development of a completely new system.
+
+---
+
+## Section B – Implementation-Oriented and Scenario-Based MCQs
+
+### Q16. Production Hot Fix
+
+A production payment application experiences a critical defect. The development team releases an urgent fix outside the planned release schedule.
+
+What type of maintenance trigger is this?
+
+A. Planned enhancement.
+
+B. Hot fix.
+
+C. System retirement.
+
+D. Environment migration.
+
+### Q17. Database Migration
+
+An organization migrates its application database from Oracle to PostgreSQL.
+
+Which testing activities are particularly relevant?
+
+A. Only UI testing.
+
+B. Data conversion, database compatibility and application testing.
+
+C. Only unit testing.
+
+D. Only acceptance testing.
+
+### Q18. Impact Analysis
+
+A developer changes a shared authentication component used by five different applications.
+
+What should the test team do first to determine the scope of regression testing?
+
+A. Execute every test case without analyzing the change.
+
+B. Perform impact analysis to identify affected applications and dependencies.
+
+C. Test only the authentication screen.
+
+D. Skip regression testing because the component was already tested.
+
+### Q19. Application Retirement
+
+An organization retires an old payroll system but must preserve employee records for seven years.
+
+Which testing activity is most relevant?
+
+A. Load testing of the retired application.
+
+B. Testing data archiving, retrieval and restoration procedures.
+
+C. Testing new feature development.
+
+D. Testing UI responsiveness.
+
+### Q20. Planned Enhancement
+
+An e-commerce application introduces a new loyalty-points feature.
+
+Which activity is most appropriate?
+
+A. Test only the loyalty-points feature.
+
+B. Test the new feature and perform appropriate regression testing on existing functionality.
+
+C. Skip regression testing because the feature is new.
+
+D. Test only the database.
+
+### Q21. Operational Environment Upgrade
+
+A company upgrades the operating system on which its application runs.
+
+Which statement is most accurate?
+
+A. Maintenance testing is unnecessary because application code has not changed.
+
+B. Testing should evaluate compatibility with the new operational environment.
+
+C. Only source-code review is required.
+
+D. Only acceptance testing is required.
+
+### Q22. Change Risk
+
+A small change is made to a critical payment calculation module.
+
+Although the code change is small, the business risk is high.
+
+How should the testing team approach the scope of maintenance testing?
+
+A. Perform minimal testing because the change is small.
+
+B. Consider the high risk and perform appropriate testing.
+
+C. Skip regression testing.
+
+D. Test only the modified line of code.
+
+### Q23. Regression Scope
+
+A change is made to a shared API used by multiple microservices.
+
+Which factor should influence the regression testing scope?
+
+A. Only the number of changed lines.
+
+B. The potential impact on dependent services and interfaces.
+
+C. Only the developer who made the change.
+
+D. Only the deployment date.
+
+### Q24. Preventive Maintenance
+
+A development team refactors complex code to reduce the likelihood of future defects.
+
+Which maintenance category does this represent?
+
+A. Corrective.
+
+B. Adaptive.
+
+C. Perfective.
+
+D. Preventive.
+
+### Q25. Perfective Maintenance
+
+A company optimizes database queries to improve application response time and maintainability.
 
 Which maintenance category is most appropriate?
 
-A. Corrective
-B. Adaptive
-C. Perfective
-D. Retirement
-Q14.
-A team refactors a fragile module to reduce the likelihood of future
-failures, even though no current defect has been reported.
+A. Corrective.
 
-Which maintenance category is most appropriate?
+B. Adaptive.
 
-A. Corrective
-B. Adaptive
-C. Perfective
-D. Preventive
-Q15.
-An organization introduces a new feature in an application that has been
-running in production for two years.
+C. Perfective.
 
-Which testing activity is required?
+D. Retirement.
 
-A. Only initial development testing
-B. Maintenance testing
-C. Only static testing
-D. No testing because the application is already live
-Q16.
-A company migrates customer records from an old application into a
-system being maintained. The team checks whether the converted data is
-correct.
+### Q26. Data Conversion
 
-Which maintenance trigger is involved?
+During a migration, data from an old application is transferred into a new application.
 
-A. Retirement only
-B. Upgrade or migration
-C. Corrective change
-D. Planned enhancement only
-Q17.
-A company is retiring an old application but must preserve its records.
-The team checks whether archived records can be restored and retrieved.
+Which testing activity is especially important?
 
-Which maintenance trigger is involved?
+A. Data conversion and data integrity testing.
 
-A. Modification
-B. Upgrade
-C. Retirement
-D. Perfective maintenance
-Q18.
-Before modifying a shared payment service, a tester identifies that the
-service is used by checkout, refunds, and subscription renewals.
+B. Only UI testing.
 
-Which activity is being performed?
+C. Only performance testing.
 
-A. Confirmation testing
-B. Impact analysis
-C. Acceptance testing
-D. Alpha testing
-Q19.
-A change is made to the discount calculation. The tester verifies that
-the new discount rule works correctly.
+D. Only unit testing.
 
-What is the primary focus of this testing?
+### Q27. Maintenance Testing Scope
 
-A. Testing the change
-B. Testing system retirement
-C. Testing only the operational environment
-D. Testing data archiving
-Q20.
-After a change to the discount calculation, the tester checks whether
-existing tax calculation and invoice generation still work correctly.
+A minor change is made to a very large system with many dependencies.
 
-What is the primary purpose of this testing?
+Which factors should be considered when deciding the scope of maintenance testing?
 
-A. Confirmation testing only
-B. Regression testing
-C. Alpha testing
-D. Regulatory acceptance testing
-Q21.
-A minor change is proposed in a very large and highly interconnected
-application. The team decides to assess the risk before deciding the
-test scope.
+A. Only the size of the code change.
+
+B. Risk of the change, size of the existing system and size of the change.
+
+C. Only the number of developers.
+
+D. Only the time available for testing.
+
+### Q28. Confirmation vs Regression
+
+A defect in a login feature is fixed.
+
+The tester:
+
+1. Re-executes the previously failing login test.
+2. Tests other affected features to ensure the change has not introduced new problems.
 
 Which statement is correct?
 
-A. Only the size of the code change matters
-B. Only the number of testers matters
-C. Risk, existing system size, and change size can influence maintenance
-test scope
-D. Maintenance testing scope is always fixed
-Q22.
-A team releases a planned enhancement in a scheduled release. The team
-tests the new feature and checks unchanged functionality for
-regressions.
+A. Both activities are confirmation testing.
+
+B. The first is confirmation testing; the second is regression testing.
+
+C. The first is regression testing; the second is confirmation testing.
+
+D. Both activities are maintenance planning.
+
+### Q29. Unchanged Functionality
+
+A new discount feature is introduced in an e-commerce application. Existing checkout and payment features are not modified directly.
+
+Why should they still be tested?
+
+A. Because maintenance testing must only test unchanged components.
+
+B. Because changes can adversely affect unchanged parts of the system.
+
+C. Because unchanged components always contain defects.
+
+D. Because regression testing is mandatory for every single line of code.
+
+### Q30. Multiple Maintenance Triggers
+
+An organization performs the following activities:
+
+1. Fixes a production defect.
+2. Migrates its database platform.
+3. Retires an old application and archives its data.
 
 Which statement is correct?
 
-A. Maintenance testing applies only to unplanned hotfixes
-B. Planned enhancements can trigger maintenance testing
-C. Regression testing is unnecessary for planned releases
-D. Maintenance testing applies only during retirement
-Q23.
-A production issue requires an urgent deployment outside the planned
-release schedule.
+A. Only activity 1 requires maintenance testing.
 
-Which term best describes this type of deployment?
+B. Activities 1 and 2 require maintenance testing.
 
-A. Hotfix
-B. Beta release
-C. Alpha release
-D. Retirement
-Q24.
-An application is migrated to a new platform. The team tests the
-modified application in the new environment and also checks that
-existing functionality remains correct.
+C. All three activities can trigger maintenance testing.
 
-Which statement best describes the testing?
+D. None of the activities require maintenance testing.
 
-A. Only component testing is required
-B. Maintenance testing includes testing the change and checking for
-regressions
-C. Only acceptance testing is required
-D. Regression testing is not relevant to migrations
-Q25.
-A system is being retired. The organization must retain historical
-records for several years and ensure that the records can be accessed
-when required.
+---
 
-Which testing is especially relevant?
+# 14. Answer Key – Section A
 
-A. Data archiving and retrieval testing
-B. Only load testing
-C. Only component integration testing
-D. Only alpha testing
-15. Answer Key --- Foundational Questions
-    Question                Answer                  Explanation
-    Q1                      B                       Maintenance testing
-    concerns an existing
-    system after delivery
-    when it changes or is
-    retired.
+| Question | Answer | Concept |
+|---|---|---|
+| Q1 | B | Maintenance testing purpose |
+| Q2 | D | Maintenance triggers |
+| Q3 | B | Corrective maintenance |
+| Q4 | B | Adaptive maintenance |
+| Q5 | B | Impact analysis |
+| Q6 | C | Hot fix |
+| Q7 | D | Maintenance testing scope |
+| Q8 | C | Environment migration |
+| Q9 | D | System retirement |
+| Q10 | B | Maintenance testing triggers |
+| Q11 | B | Hot fix |
+| Q12 | B | Adaptive maintenance |
+| Q13 | B | Regression testing |
+| Q14 | A | Impact analysis |
+| Q15 | D | Maintenance testing triggers |
 
-Q2                      B                       Modifications are a
-major trigger for
-maintenance testing.
+## Section A – Explanations
 
-Q3                      C                       Corrective maintenance
-fixes defects.
+**Q1 – B:** Maintenance testing evaluates changes to an existing system and checks whether existing functionality has been affected.
 
-Q4                      B                       Adapting to a new
-operating environment
-is adaptive
-maintenance.
+**Q2 – D:** Modifications, environment upgrades or migrations and system retirement are all maintenance testing triggers.
 
-Q5                      A                       Improving performance
-is perfective
-maintenance.
+**Q3 – B:** Corrective maintenance involves fixing defects in existing software.
 
-Q6                      C                       Retirement may require
-testing archiving and
-retrieval procedures.
+**Q4 – B:** Adaptive maintenance modifies software to accommodate environmental changes.
 
-Q7                      B                       Impact analysis
-identifies possible
-consequences of a
-change.
+**Q5 – B:** Impact analysis identifies potential consequences of a change in other areas of the system.
 
-Q8                      D                       The stated factors are
-risk, existing system
-size, and change size.
+**Q6 – C:** An emergency hot fix is an example of unplanned maintenance.
 
-Q9                      C                       Maintenance testing
-checks the change and
-possible regressions.
-Q10                     B                       A hotfix is an urgent
-correction.
-16. Answer Key --- Scenario-Based Questions
-    Question                Answer                  Explanation
-    Q11                     B                       The change corrects a
-    defect in production.
+**Q7 – D:** The scope depends on the risk of the change, size of the existing system and size of the change.
 
-Q12                     B                       The software is being
-adapted to a changed
-environment.
+**Q8 – C:** Migration may require testing the new environment, changed software and data conversion.
 
-Q13                     C                       Query optimization
-improves performance.
+**Q9 – D:** Retirement can require testing archiving, restoration and retrieval procedures.
 
-Q14                     D                       The refactoring aims to
-reduce future problems.
+**Q10 – B:** All three categories are maintenance testing triggers.
 
-Q15                     B                       Changes to an existing
-production system
-trigger maintenance
-testing.
+**Q11 – B:** A hot fix is an urgent change, usually released outside the normal release cycle.
 
-Q16                     B                       Data conversion during
-migration is part of an
-upgrade/migration
-trigger.
+**Q12 – B:** Adaptive maintenance addresses changes in the operational environment.
 
-Q17                     C                       The application is
-being retired and
-archived data must
-remain accessible.
+**Q13 – B:** Regression testing checks that changes have not caused adverse effects in existing functionality.
 
-Q18                     B                       The tester identifies
-areas potentially
-affected by a proposed
-change.
+**Q14 – A:** Impact analysis helps identify potentially affected areas and determine the testing scope.
 
-Q19                     A                       The tester is checking
-whether the new change
-works.
+**Q15 – D:** Initial development of a completely new system is not one of the three maintenance triggers described here.
 
-Q20                     B                       The tester checks
-unchanged functionality
-for side effects.
+---
 
-Q21                     C                       All three stated
-factors can influence
-test scope.
+# 15. Answer Key – Section B
 
-Q22                     B                       Planned enhancements
-can trigger maintenance
-testing.
+| Question | Answer | Concept |
+|---|---|---|
+| Q16 | B | Hot fix |
+| Q17 | B | Database migration |
+| Q18 | B | Impact analysis |
+| Q19 | B | System retirement |
+| Q20 | B | Enhancement and regression |
+| Q21 | B | Environment upgrade |
+| Q22 | B | Risk-based maintenance testing |
+| Q23 | B | Dependencies and impact |
+| Q24 | D | Preventive maintenance |
+| Q25 | C | Perfective maintenance |
+| Q26 | A | Data conversion |
+| Q27 | B | Scope of maintenance testing |
+| Q28 | B | Confirmation vs regression |
+| Q29 | B | Regression testing |
+| Q30 | C | Maintenance triggers |
 
-Q23                     A                       An urgent production
-deployment is commonly
-a hotfix.
+## Section B – Detailed Explanations
 
-Q24                     B                       Maintenance testing
-includes testing the
-change and checking for
-regressions.
-Q25                     A                       Retirement can require
-archiving, restoration,
-and retrieval testing.
-17. Final Revision Checklist
-- [ ] Explain maintenance testing in your own words.
-- [ ] Identify the four categories of maintenance.
-- [ ] Differentiate corrective, adaptive, perfective, and preventive
-  maintenance.
-- [ ] Identify modifications, upgrades/migrations, and retirement as
-  maintenance triggers.
-- [ ] Explain why a hotfix requires testing.
-- [ ] Explain why data conversion may need testing during migration.
-- [ ] Explain why archiving and retrieval need testing during
-  retirement.
-- [ ] Explain impact analysis and when it is performed.
-- [ ] Identify the three factors that influence maintenance testing
-  scope.
-- [ ] Explain why maintenance testing includes testing the change and
-  regression testing.
-18. Last-Minute Memory Map
-    If the question mentions...                Think of...
-    Fixing a production defect                 Corrective maintenance
-    Adapting to a new OS/platform              Adaptive maintenance
-    Improving performance or maintainability   Perfective maintenance
-    Reducing future problems                   Preventive maintenance
-    Planned enhancement or hotfix              Modification trigger
-    New platform or data conversion            Upgrade / migration trigger
-    End of life, archive, restore, retrieve    Retirement trigger
-    Assessing consequences before a change     Impact analysis
-    Testing the new or modified behavior       Testing the change
-    Checking unchanged functionality           Regression testing
-    Risk, system size, change size             Maintenance testing scope
-    Source note: These notes are based primarily on the screenshots
-    provided. Explanatory examples and practice questions are added for
-    learning; the MCQs are original revision questions, not official ISTQB
-    examination questions or verified past-paper questions.
+**Q16 – B:** A critical production fix released urgently outside the normal release schedule is a hot fix.
+
+**Q17 – B:** Database migration requires checking data conversion, data integrity, compatibility and application behavior.
+
+**Q18 – B:** Impact analysis identifies affected applications, dependencies and interfaces before the team determines the regression scope.
+
+**Q19 – B:** Retirement may require testing data archiving, retrieval and restoration procedures.
+
+**Q20 – B:** The new loyalty-points feature requires testing, but existing checkout and payment functionality should also be checked for regressions.
+
+**Q21 – B:** An operating system upgrade changes the operational environment and can trigger maintenance testing even if application code is unchanged.
+
+**Q22 – B:** A small code change can have high business risk. Testing scope should consider risk rather than code size alone.
+
+**Q23 – B:** Shared APIs can affect multiple dependent services. Their potential impact should guide regression testing.
+
+**Q24 – D:** Refactoring to reduce the possibility of future problems is preventive maintenance.
+
+**Q25 – C:** Improving performance and maintainability is perfective maintenance.
+
+**Q26 – A:** Data conversion and data integrity are important when migrating data between applications or platforms.
+
+**Q27 – B:** All three factors influence the scope of maintenance testing.
+
+**Q28 – B:** Repeating the previously failing test verifies the fix (confirmation testing). Testing other affected functionality checks for regressions.
+
+**Q29 – B:** A change can affect components that were not directly modified. Regression testing helps detect such adverse consequences.
+
+**Q30 – C:** Defect fixes, environment migrations and system retirement can all trigger maintenance testing.
+
+---
+
+# 16. Last-Minute Revision Checklist
+
+Before moving to the next chapter, ensure that you can:
+
+- [ ] Define maintenance testing.
+- [ ] Explain why maintenance testing is required.
+- [ ] Differentiate corrective, adaptive, perfective and preventive maintenance.
+- [ ] Explain planned and unplanned maintenance.
+- [ ] Define a hot fix.
+- [ ] Explain impact analysis and its purpose.
+- [ ] Explain why unchanged functionality must also be tested.
+- [ ] Identify the three maintenance testing triggers.
+- [ ] Explain testing requirements during environment upgrades and migrations.
+- [ ] Explain why retirement requires testing.
+- [ ] Identify the three factors influencing maintenance testing scope.
+- [ ] Differentiate confirmation testing and regression testing.
+
+---
+
+# 17. Self-Assessment
+
+| Score | Assessment |
+|---|---|
+| 27–30 | Excellent – Strong understanding |
+| 24–26 | Good – Revise incorrect concepts |
+| 20–23 | Average – Revisit scenario-based questions |
+| 15–19 | Needs improvement – Revise the module |
+| Below 15 | Re-study the module before proceeding |
+
+**High-priority exam areas:**
+
+1. Three maintenance testing triggers.
+2. Impact analysis.
+3. Scope of maintenance testing.
+4. Corrective, adaptive, perfective and preventive maintenance.
+5. Data archiving and migration.
+6. Confirmation testing vs regression testing.
