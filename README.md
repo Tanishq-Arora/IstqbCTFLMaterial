@@ -30,7 +30,7 @@ This repository aims to provide:
 | 1 | Fundamentals of Testing | [View Notes](./01-fundamentals-of-testing/)  |
 | 2 | Testing Throughout the Software Development Lifecycle | [View Notes](./02-testing-throughout-sdlc/)  |
 | 3 | Static Testing | [View Notes](./03-static-testing/)           |
-| 4 | Test Analysis and Design | [View Notes](./04-Test-Analysis-and-Design/) |
+| 4 | Test Analysis and Design | [View Notes](./04-test-analysis-and-design/) |
 | 5 | Managing Test Activities | [View Notes](./05-Managing-Test-Activities/) |
 | 6 | Test Tools | [View Notes](./06-Test-Tools/)               |
 
